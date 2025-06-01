@@ -17,11 +17,40 @@ This project implements a state-of-the-art deep learning system for automated sk
 - **Clinical Support**: Helps healthcare professionals prioritize cases for dermatologist review
 - **Decision Support**: Enhances diagnostic confidence in clinical settings
 
+## 📓 Interactive Notebook
+
+### 🚀 Try it in Google Colab
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thedatadudech/skin-cancer-detection/blob/main/skincancer_detector.ipynb)
+
+Our comprehensive Jupyter notebook (`skincancer_detector.ipynb`) provides an interactive learning experience for understanding the complete development process of the skin cancer detection system.
+
+#### What's Inside:
+- **📊 Dataset Exploration**: Analyze the HAM10000 medical imaging dataset
+- **🔍 Data Visualization**: Understand class distributions and image properties
+- **🧠 Model Comparison**: Compare EfficientNet, ResNet, and custom CNN architectures
+- **⚙️ Training Pipeline**: Step-by-step model training with PyTorch
+- **📈 Performance Analysis**: Comprehensive evaluation metrics and visualizations
+- **🎯 Medical Context**: Learn about skin cancer types and detection importance
+
+#### Quick Start Options:
+
+1. **Google Colab** (Recommended): Click the badge above for instant access
+2. **Local Jupyter**: Download and run `jupyter notebook skincancer_detector.ipynb`
+3. **VS Code**: Open the notebook in VS Code with the Jupyter extension
+
+#### Features:
+- ✅ **Colab-Ready**: Automatic environment setup for Google Colab
+- ✅ **Sample Data**: Option to use demonstration dataset
+- ✅ **Step-by-Step**: Detailed explanations and medical context
+- ✅ **Interactive**: Modify parameters and see results immediately
+
 ### 🔬 Key Features
 
 - **Multi-class Classification**: Detects 7 different types of skin lesions
 - **Deep Learning Models**: EfficientNet, ResNet, and custom CNN architectures
 - **Real-time Analysis**: Web-based interface for instant image processing
+- **Interactive Notebook**: Complete analysis pipeline in Google Colab
 - **Confidence Scoring**: Probability distributions for all classes
 - **Medical-grade Accuracy**: Trained on HAM10000 dataset with 10,000+ images
 
