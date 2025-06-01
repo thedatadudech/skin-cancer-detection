@@ -67,39 +67,142 @@ The system uses the **HAM10000** dataset ("Human Against Machine with 10000 trai
 ### Prerequisites
 - Python 3.11 or higher
 - CUDA (optional, for GPU acceleration)
+- Git
 
-### Quick Setup
+### Installation Methods
+
+#### Method 1: Using uv (Recommended - Modern Python Package Manager)
+```bash
+# Install uv if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone the repository
+git clone https://github.com/thedatadudech/skin-cancer-detection.git
+cd skin-cancer-detection
+
+# Install dependencies using pyproject.toml
+uv sync
+
+# Activate the virtual environment
+source .venv/bin/activate  # Linux/Mac
+# or
+.venv\Scripts\activate     # Windows
+```
+
+#### Method 2: Using pip with pyproject.toml
 ```bash
 # Clone the repository
 git clone https://github.com/thedatadudech/skin-cancer-detection.git
 cd skin-cancer-detection
 
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
+
+# Install in development mode
+pip install -e .
+
+# Or install specific dependencies
+pip install torch>=2.5.1 torchvision>=0.20.1 streamlit>=1.41.1 pandas>=2.2.3 numpy>=2.2.2 scikit-learn>=1.6.1 Pillow==10.0.0 tqdm>=4.67.1
+```
+
+#### Method 3: Using requirements.txt (Traditional)
+```bash
+# Copy the requirements template
+cp requirements-template.txt requirements.txt
+
 # Install dependencies
 pip install -r requirements.txt
+```
 
-# Or using the project configuration
+The `requirements-template.txt` file includes all necessary dependencies with optional components commented out.
+
+### Dependency Management
+
+#### Using pyproject.toml (Project Configuration)
+The project uses `pyproject.toml` for dependency management. This file contains:
+
+- **Core dependencies**: Required for basic functionality
+- **Development dependencies**: For testing and code quality
+- **PyTorch CPU**: Optimized for CPU-only environments
+- **Build system**: Modern Python packaging standards
+
+#### Key Dependencies Explained
+- **torch/torchvision**: Deep learning framework and computer vision utilities
+- **streamlit**: Web application framework for the user interface
+- **pandas/numpy**: Data processing and numerical computations
+- **scikit-learn**: Machine learning utilities and metrics
+- **Pillow**: Image processing and manipulation
+- **tqdm**: Progress bars for training loops
+
+### Advanced Installation Options
+
+#### GPU Support (CUDA)
+For GPU acceleration, install PyTorch with CUDA support:
+```bash
+# Using uv with GPU support
+uv sync --extra gpu
+
+# Using pip with CUDA 11.8
+pip install torch>=2.5.1+cu118 torchvision>=0.20.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+```
+
+#### Development Environment
+For development with testing and code quality tools:
+```bash
+# Using uv
+uv sync --extra dev
+
+# Using pip
+pip install -e ".[dev]"
+```
+
+#### Documentation Generation
+To build documentation:
+```bash
+# Install documentation dependencies
+uv sync --extra docs
+# or
+pip install -e ".[docs]"
+```
+
+### Troubleshooting Installation
+
+#### Common Issues
+
+**PyTorch Installation Issues**
+```bash
+# Clear pip cache
+pip cache purge
+
+# Install PyTorch separately first
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 pip install -e .
 ```
 
-### Dependencies
-```python
-# Core ML libraries
-torch>=2.5.1
-torchvision>=0.20.1
-tensorflow>=2.14.0
+**Memory Issues During Installation**
+```bash
+# Install with limited memory usage
+pip install --no-cache-dir -e .
+```
 
-# Data processing
-numpy>=2.2.2
-pandas>=2.2.3
-scikit-learn>=1.6.1
-pillow==10.0.0
+**Version Conflicts**
+```bash
+# Create fresh environment
+python -m venv fresh_env
+source fresh_env/bin/activate
+pip install --upgrade pip
+pip install -e .
+```
 
-# Web interface
-streamlit>=1.41.1
-flask>=3.1.0
-
-# Utilities
-tqdm>=4.67.1
+#### Environment Verification
+After installation, verify your setup:
+```bash
+python -c "import torch; print(f'PyTorch: {torch.__version__}')"
+python -c "import streamlit; print('Streamlit: OK')"
+python -c "from src.model import create_model; print('Models: OK')"
 ```
 
 ## 🔧 Usage
